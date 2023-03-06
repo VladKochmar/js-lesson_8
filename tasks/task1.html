@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 1</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 1</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function createMarkList(numberOfSubjects) {
+         const markList = new Array(numberOfSubjects)
+
+         for (let i = 0; i < markList.length; i++) {
+            const userMark = parseInt(prompt('Введіть оцінку'))
+            markList[i] = userMark
+         }
+
+         return markList
+      }
+
+      function getAverageMark(markList) {
+         let markSum = 0
+
+         for (let i = 0; i < markList.length; i++) {
+            markSum += markList[i]
+         }
+
+         return markSum / markList.length
+      }
+
+      function getMinMark(markList) {
+         let minMark = markList[0]
+
+         for (let i = 0; i < markList.length; i++) {
+            if (minMark > markList[i]) minMark = markList[i]
+         }
+
+         return minMark
+      }
+
+      function getStudentCategory(minMark) {
+         let status
+
+         if (minMark <= 2) status = 'двійочник'
+         else if (minMark === 3) status = 'трійочник'
+         else if (minMark === 4) status = 'хорошист'
+         else status = 'відмінник'
+
+         return status
+      }
+
+      const subjectsNum = parseInt(prompt('Введіть кількість предметів'))
+
+      const userMarks = createMarkList(subjectsNum)
+
+      const minUserMark = getMinMark(userMarks)
+
+      document.write(`
+         <div class="text">Середня оцінка: ${Math.round(getAverageMark(userMarks))}</div>
+         <div class="text">Категорія учня: ${getStudentCategory(minUserMark)}</div>
+      `)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 7</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 7</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getPeriodSum(paymentsList, start = 0, end = 12, iterationStep = 1) {
+         let periodSum = 0
+
+         for (let i = start; i < end; i += iterationStep) {
+            periodSum += paymentsList[i]
+         }
+
+         return periodSum
+      }
+
+      function showPaymentsList(paymentsList) {
+         let string = ''
+
+         for (let i = 0; i < paymentsList.length; i++) {
+            string += `Місяць №${i + 1} (${paymentsList[i]}) `
+         }
+
+         return string
+      }
+
+      const paymentsList = [1250, 2740, 3734.50, 995.43, 3264, 2013.25, 1333, 4750, 2450, 2740, 1400, 768.98]
+
+      document.write(`
+         <div class="text">Послідовність платіжок протягом року: ${showPaymentsList(paymentsList)}</div>
+         <div class="text">Сума за весь рік: ${getPeriodSum(paymentsList, 0, 12)}</div>
+         <div class="text">Сума у першій половині року: ${getPeriodSum(paymentsList, 1, 6)}</div>
+         <div class="text">Сума у другій половині року: ${getPeriodSum(paymentsList, 7, 12)}</div>
+         <div class="text">Сума за літо: ${getPeriodSum(paymentsList, 6, 8)}</div>
+         <div class="text">Сума за ІІ квартал: ${getPeriodSum(paymentsList, 4, 6)}</div>
+         <div class="text">Сума за парні місяці (з парними номерами): ${getPeriodSum(paymentsList, 1, 12, 2)}</div>
+         <div class="text">Сума за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${getPeriodSum(paymentsList, 2, 12, 3)}</div>
+      `)
+   </script>
+</body>
+
+</html>

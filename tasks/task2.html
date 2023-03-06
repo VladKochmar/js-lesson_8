@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 2</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 2</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getDaysVisitorsLessThan20(daysArray) {
+         let daysLessThan20 = []
+
+         for (let i = 0; i < daysArray.length; i++) {
+            if (daysArray[i] < 20) daysLessThan20.push(i + 1)
+         }
+
+         return daysLessThan20
+      }
+
+      function getMinVisitorsPerDay(daysArray) {
+         let minVisitorsOne = daysArray[0],
+            minVisitorsTwo = daysArray[1],
+            minDayNumOne = 0,
+            minDayNumTwo = 0,
+            minVisitorsDays = []
+
+         for (let i = 0; i < daysArray.length; i++) {
+            if (daysArray[i] < minVisitorsOne) {
+               minVisitorsTwo = minVisitorsOne
+               minDayNumTwo = minDayNumOne
+
+               minVisitorsOne = daysArray[i]
+               minDayNumOne = i + 1
+            }
+         }
+
+         minVisitorsDays.push(minDayNumOne)
+         minVisitorsDays.push(minDayNumTwo)
+
+         return minVisitorsDays
+      }
+
+      function getMaxVisitorsPerDay(daysArray) {
+         let maxVisitorsOne = daysArray[0],
+            maxVisitorsTwo = daysArray[1],
+            maxDayNumOne = 0,
+            maxDayNumTwo = 0,
+            maxVisitorsDays = []
+
+         for (let i = 0; i < daysArray.length; i++) {
+            if (daysArray[i] > maxVisitorsOne) {
+               maxVisitorsTwo = maxVisitorsOne
+               maxDayNumTwo = maxDayNumOne
+
+               maxVisitorsOne = daysArray[i]
+               maxDayNumOne = i + 1
+            }
+         }
+
+         maxVisitorsDays.push(maxDayNumOne)
+         maxVisitorsDays.push(maxDayNumTwo)
+
+         return maxVisitorsDays
+      }
+
+      function customersNumWorkingDays(daysArray) {
+         let customersSum = 0
+
+         for (let i = 0; i < 5; i++) {
+            customersSum += daysArray[i]
+         }
+
+         return customersSum
+      }
+
+      function customersSumWeekends(daysArray) {
+         let customersSum = 0
+
+         for (let i = 5; i < daysArray.length; i++) {
+            customersSum += daysArray[i]
+         }
+
+         return customersSum
+      }
+
+      const daysList = [20, 19, 34, 15, 27, 54, 67]
+
+      const daysLessThan20 = getDaysVisitorsLessThan20(daysList)
+      const minDay = getMinVisitorsPerDay(daysList)
+      const maxDay = getMaxVisitorsPerDay(daysList)
+      const customersInWorkingDays = customersNumWorkingDays(daysList)
+      const customersInWeekends = customersSumWeekends(daysList)
+
+      document.write(`
+         <div class="text">Кількість клієнтів за кожен день: ${daysList}</div>
+         <div class="text">Номери днів, протягом яких кількість відвідувачів була меншою за 20: ${daysLessThan20}</div>
+         <div class="text">Номери днів, коли кількість відвідувачів була мінімальною: ${minDay}</div>
+         <div class="text">Номери днів, коли кількість відвідувачів була максимальною: ${maxDay}</div>
+         <div class="text">Кількість клієнтів у робочі дні: ${customersInWorkingDays}</div>
+         <div class="text">Кількість клієнтів у вихідні дні: ${customersInWeekends}</div>
+      `)
+   </script>
+</body>
+
+</html>

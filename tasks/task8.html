@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 8</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 8</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function createLotery(loterySize) {
+         const lotery = new Array(loterySize)
+
+         for (let i = 0; i < lotery.length; i++) {
+            lotery[i] = Math.floor(Math.random() * (500 - (-500)) + (-500))
+         }
+
+         return lotery
+      }
+
+      function getPrizeSum(lotery) {
+         let prizeSum = 0, userChoice
+
+         do {
+            userChoice = parseInt(prompt(`Введіть номер елементу від 0 до ${lotery.length - 1} Ваш баланс: ${prizeSum}`))
+            if (!isNaN(userChoice)) prizeSum += lotery[userChoice]
+         } while (userChoice)
+
+         return prizeSum
+      }
+
+      const lotery = createLotery(10)
+
+      const prizeSum = getPrizeSum(lotery)
+
+      document.write(`<div class="text">Сума виграшу: ${prizeSum}</div>`)
+      console.log(lotery);
+   </script>
+</body>
+
+</html>
